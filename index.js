@@ -1,9 +1,9 @@
-console.log("champion is here");
+// console.log("champion is here");
 function formatAmount(amount) {
   return "$" + amount.toFixed(2);
 }
 
-console.log(formatAmount(1999));
+// console.log(formatAmount(1999));
 
 /*var askForPhonePurchase = prompt(
   `Only today You are able to buy the IPhone with extra discount! Would you like it to buy it right now?`
@@ -27,7 +27,7 @@ const getMaxPhonesBuyingAmount = function (limit) {
 
 amount = getMaxPhonesBuyingAmount(bankBalance);
 
-console.log({ amount });
+// console.log({ amount });
 
 if (amount < THRESHOLD) {
   amount = amount + getTaxedPrice(accessoryPrice);
@@ -49,3 +49,64 @@ function calculateTheFinalPurchaseAmount(amt) {
   amt = amt + amt * TAX_RATE;
   return amt;
 }
+
+function makeAdder(x) {
+  function add(y) {
+    return x + y;
+  }
+  return add;
+}
+
+let plusOne = makeAdder(1);
+let plusTen = makeAdder(10);
+
+console.log(plusOne(3));
+console.log(plusTen(5));
+
+function makeWeedCounter(counterName) {
+  let count = 0;
+
+  return function () {
+    count++;
+    console.log({
+      [counterName]: count,
+    });
+  };
+}
+
+const hazeCounter = makeWeedCounter("Haze");
+hazeCounter();
+hazeCounter();
+hazeCounter();
+
+const amneziaCounter = makeWeedCounter("Amnezia");
+amneziaCounter();
+
+function User() {
+  let username, password;
+  function doLogin(user, psw) {
+    username = user;
+    password = psw;
+  }
+  let publicAPI = {
+    login: doLogin,
+  };
+  return publicAPI;
+}
+let fred = User();
+fred.login("fred", "nuizhest123");
+
+let one = 1;
+let two = 2;
+let three = 3;
+let obj = {
+  a: "1",
+  b: "2",
+};
+
+let obj2 = {
+  a: "1",
+  b: "2",
+};
+
+let obj3 = obj;
